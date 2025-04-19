@@ -1,0 +1,942 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title >Rural Girls' Digital Empowerment Platform</title>
+    <style>
+        :root {
+            --primary: #8e44ad;
+            --secondary: #f39c12;
+            --accent: #3498db;
+            --light: #f8f9fa;
+            --dark: #343a40;
+            --success: #2ecc71;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f5f5f5;
+            color: var(--dark);
+            line-height: 1.6;
+        }
+        
+        header {
+            background-color: white;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem 0;
+        }
+        
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--primary);
+        }
+        
+        .logo img {
+            height: 40px;
+            border-radius: 50%;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+        
+        nav a {
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        nav a:hover {
+            color: var(--primary);
+        }
+        
+        .auth-buttons {
+            display: flex;
+            gap: 1rem;
+        }
+        
+        .btn {
+            padding: 0.5rem 1.5rem;
+            border: none;
+            border-radius: 5px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-size: 0.9rem;
+        }
+        
+        .btn-outline {
+            background: transparent;
+            border: 2px solid var(--primary);
+            color: var(--primary);
+        }
+        
+        .btn-outline:hover {
+            background: var(--primary);
+            color: white;
+        }
+        
+        .btn-primary {
+            background: var(--primary);
+            color: white;
+        }
+        
+        .btn-primary:hover {
+            background: #7d3c98;
+        }
+        
+        .hero {
+            background: linear-gradient(rgba(142, 68, 173, 0.8), rgba(142, 68, 173, 0.9)), url('/api/placeholder/1200/600');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 5rem 0;
+            text-align: center;
+        }
+        
+        .hero h1 {
+            font-size: 2.8rem;
+            margin-bottom: 1rem;
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 2rem;
+        }
+        
+        .features {
+            padding: 4rem 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        
+        .section-title h2 {
+            font-size: 2.2rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+        
+        .section-title p {
+            max-width: 700px;
+            margin: 0 auto;
+            color: #666;
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+        
+        .feature-card {
+            background: white;
+            border-radius: 10px;
+            padding: 2rem;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .feature-icon {
+            width: 60px;
+            height: 60px;
+            background: var(--light);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+            color: var(--primary);
+            font-size: 1.5rem;
+        }
+        
+        .feature-card h3 {
+            margin-bottom: 1rem;
+            color: var(--primary);
+        }
+        
+        .testimonials {
+            background-color: #f9f0ff;
+            padding: 4rem 0;
+        }
+        
+        .testimonial-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .testimonial-card {
+            background: white;
+            border-radius: 10px;
+            padding: 2rem;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+        
+        .testimonial-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1.5rem;
+        }
+        
+        .testimonial-avatar {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            margin-right: 1rem;
+            background-color: #eee;
+            overflow: hidden;
+        }
+        
+        .testimonial-avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .testimonial-meta h4 {
+            margin-bottom: 0.25rem;
+            color: var(--dark);
+        }
+        
+        .testimonial-meta p {
+            font-size: 0.9rem;
+            color: #666;
+        }
+        
+        .testimonial-quote {
+            font-style: italic;
+            color: #555;
+            line-height: 1.8;
+        }
+        
+        .impact-gallery {
+            padding: 4rem 0;
+            background-color: white;
+        }
+        
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            grid-template-rows: repeat(2, 200px);
+            gap: 1.5rem;
+        }
+        
+        .gallery-item {
+            border-radius: 10px;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+        
+        .gallery-item:hover img {
+            transform: scale(1.05);
+        }
+        
+        .gallery-item-1 {
+            grid-column: 1 / 2;
+            grid-row: 1 / 3;
+        }
+        
+        .gallery-item-2 {
+            grid-column: 2 / 3;
+            grid-row: 1 / 2;
+        }
+        
+        .gallery-item-3 {
+            grid-column: 3 / 4;
+            grid-row: 1 / 2;
+        }
+        
+        .gallery-item-4 {
+            grid-column: 2 / 4;
+            grid-row: 2 / 3;
+        }
+        
+        .gallery-caption {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(transparent, rgba(0, 0, 0, 0.7));
+            color: white;
+            padding: 1rem;
+            font-size: 0.9rem;
+        }
+        
+        .cta {
+            background: linear-gradient(to right, var(--primary), var(--accent));
+            color: white;
+            padding: 4rem 0;
+            text-align: center;
+        }
+        
+        .cta h2 {
+            font-size: 2.2rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .cta p {
+            max-width: 700px;
+            margin: 0 auto 2rem;
+            font-size: 1.1rem;
+        }
+        
+        .cta-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+        }
+        
+        .btn-secondary {
+            background: var(--secondary);
+            color: white;
+        }
+        
+        .btn-secondary:hover {
+            background: #e67e22;
+        }
+        
+        .partners {
+            padding: 4rem 0;
+            background-color: white;
+        }
+        
+        .partners-grid {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            gap: 3rem;
+        }
+        
+        .partner-logo {
+            height: 60px;
+            filter: grayscale(100%);
+            opacity: 0.7;
+            transition: all 0.3s;
+        }
+        
+        .partner-logo:hover {
+            filter: grayscale(0);
+            opacity: 1;
+        }
+        
+        footer {
+            background: var(--dark);
+            color: white;
+            padding: 3rem 0;
+        }
+        
+        .footer-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+        }
+        
+        .footer-column h3 {
+            font-size: 1.2rem;
+            margin-bottom: 1.5rem;
+            color: var(--secondary);
+        }
+        
+        .footer-links {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 0.8rem;
+        }
+        
+        .footer-links a {
+            color: #ddd;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-links a:hover {
+            color: white;
+        }
+        
+        .copyright {
+            text-align: center;
+            margin-top: 2rem;
+            padding-top: 2rem;
+            border-top: 1px solid #555;
+            font-size: 0.9rem;
+            color: #aaa;
+        }
+        
+        /* Mobile menu */
+        .menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: var(--primary);
+            cursor: pointer;
+        }
+        
+        @media (max-width: 768px) {
+            .menu-toggle {
+                display: block;
+            }
+            
+            nav ul {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: white;
+                padding: 1rem;
+                box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+            }
+            
+            nav ul.show {
+                display: flex;
+            }
+            
+            .auth-buttons {
+                display: none;
+            }
+            
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .testimonial-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .gallery-grid {
+                grid-template-columns: 1fr;
+                grid-template-rows: repeat(4, 200px);
+            }
+            
+            .gallery-item-1, .gallery-item-2, .gallery-item-3, .gallery-item-4 {
+                grid-column: 1;
+            }
+            
+            .gallery-item-1 {
+                grid-row: 1;
+            }
+            
+            .gallery-item-2 {
+                grid-row: 2;
+            }
+            
+            .gallery-item-3 {
+                grid-row: 3;
+            }
+            
+            .gallery-item-4 {
+                grid-row: 4;
+            }
+        }
+        
+        /* Dashboard Styles */
+        .dashboard {
+            padding: 3rem 0;
+            display: none; /* Initially hidden, shown after login */
+        }
+        
+        .dashboard-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+        }
+        
+        .dashboard-welcome h2 {
+            color: var(--primary);
+        }
+        
+        .progress-container {
+            background: white;
+            border-radius: 10px;
+            padding: 2rem;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            margin-bottom: 2rem;
+        }
+        
+        .progress-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+        
+        .progress-bar {
+            height: 10px;
+            background: #eee;
+            border-radius: 5px;
+            overflow: hidden;
+        }
+        
+        .progress-fill {
+            height: 100%;
+            background: var(--success);
+            width: 60%; /* Example progress */
+        }
+        
+        .courses-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+        
+        .course-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s;
+        }
+        
+        .course-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .course-image {
+            height: 160px;
+            background-color: #eee;
+            overflow: hidden;
+        }
+        
+        .course-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .course-content {
+            padding: 1.5rem;
+        }
+        
+        .course-category {
+            display: inline-block;
+            padding: 0.3rem 0.8rem;
+            background: var(--light);
+            border-radius: 20px;
+            font-size: 0.8rem;
+            color: var(--primary);
+            margin-bottom: 0.8rem;
+        }
+        
+        .course-card h3 {
+            margin-bottom: 0.8rem;
+            color: var(--dark);
+        }
+        
+        .course-meta {
+            display: flex;
+            justify-content: space-between;
+            color: #777;
+            font-size: 0.9rem;
+            margin-top: 1rem;
+        }
+        
+        .stats-section {
+            background-color: var(--light);
+            padding: 4rem 0;
+        }
+        
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            text-align: center;
+        }
+        
+        .stat-item {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+        
+        .stat-number {
+            font-size: 3rem;
+            font-weight: bold;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+        
+        .stat-label {
+            color: #666;
+            font-size: 1rem;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container nav-container">
+            <div class="logo">
+                <img src="c:\Users\Laptop Hub\Pictures\image 12.jpg" alt="Logo">
+                <span>RuralGirlsEmpowerment</span>
+            </div>
+            <button class="menu-toggle" id="menuToggle">☰</button>
+            <nav>
+                <ul id="navMenu">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#features">Features</a></li>
+                    <li><a href="#testimonials">Success Stories</a></li>
+                    <a href="https://www.quora.com/Is-there-a-mobile-app-that-can-accurately-measure-my-body-dimensions-neck-to-waist-arm-length-even-waist-size-etc"><a href="#resources">Resources</a></a>
+                    
+                </ul>
+            </nav>
+            <div class="auth-buttons">
+               <a href="./login page.html"> <button class="btn btn-outline" id="loginBtn" >Login</button></a>
+                <a href="sign in.html"><button class="btn btn-primary" id="signupBtn">Sign Up</button></a>
+            </div>
+        </div>
+    </header>
+
+    <section class="hero" id="home">
+        <div class="container">
+            <h1>Empowering Rural Girls Through Digital Education</h1>
+            <p>Access quality education, build skills, connect with mentors, and launch micro-enterprises - all in one platform designed for girls in rural communities.</p>
+            <div class="cta-buttons">
+                <a href="womens products.html"><button class="btn btn-primary" >Get Started</button></a>
+                <button class="btn btn-secondary">Learn More</button>
+            </div>
+        </div>
+    </section>
+
+    <section class="stats-section">
+        <div class="container">
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <div class="stat-number">2000+</div>
+                    <div class="stat-label">Girls Empowered</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">200+</div>
+                    <div class="stat-label">Rural Communities</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">150+</div>
+                    <div class="stat-label">Mentors</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">85%</div>
+                    <div class="stat-label">Skill Improvement</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="features" id="features">
+        <div class="container">
+            <div class="section-title">
+                <h2>Unlock Your Potential</h2>
+                <p>Our platform offers a comprehensive set of tools designed specifically for rural girls to break barriers and create opportunities.</p>
+            </div>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">📚</div>
+                    <h3>Localized E-Learning</h3>
+                    <p>Access culturally relevant educational content in your local language, designed to work even with limited internet connectivity.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">💪</div>
+                    <h3>Skill Development</h3>
+                    <p>Learn practical digital, financial, and entrepreneurial skills that open doors to economic opportunities.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">👥</div>
+                    <h3>Mentorship Network</h3>
+                    <p>Connect with successful women from similar backgrounds who can guide and inspire you on your journey.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🚀</div>
+                    <h3>Micro-Entrepreneurship</h3>
+                    <p>Access tools, resources, and support to start and grow your own small business or income-generating project.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="impact-gallery">
+        <div class="container">
+            <div class="section-title">
+                <h2>Our Impact</h2>
+                <p>See how our platform is transforming lives across rural communities.</p>
+            </div>
+            <div class="gallery-grid">
+                <div class="gallery-item gallery-item-1">
+                    <img src="c:\Users\Laptop Hub\Pictures\ruler girl.jpeg" alt="Rural girls using computers">
+                    <div class="gallery-caption">Computer lab session in a rural school in Karnataka, India</div>
+                </div>
+                <div class="gallery-item gallery-item-2">
+                    <img src="c:\Users\Laptop Hub\Pictures\images (15).jpeg" alt="Mentorship program">
+                    <div class="gallery-caption">Virtual mentorship session connecting rural students with urban professionals</div>
+                </div>
+                <div class="gallery-item gallery-item-3">
+                    <img src="c:\Users\Laptop Hub\Pictures\download (3).jpeg" alt="Entrepreneurship training">
+                    <div class="gallery-caption">Young women participating in entrepreneurship workshop</div>
+                </div>
+                <div class="gallery-item gallery-item-4">
+                    <img src="c:\Users\Laptop Hub\Pictures\download (13).jpeg" alt="Community impact">
+                    <div class="gallery-caption">Local marketplace featuring products created by program graduates</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="testimonials" id="testimonials">
+        <div class="container">
+            <div class="section-title">
+                <h2>Success Stories</h2>
+                <p>Hear from girls who have transformed their lives through our platform.</p>
+            </div>
+            <div class="testimonial-grid">
+                <div class="testimonial-card">
+                    <div class="testimonial-header">
+                        <div class="testimonial-avatar">
+                            <img src="c:\Users\Laptop Hub\Pictures\images (19).jpeg" alt="Testimonial">
+                        </div>
+                        <div class="testimonial-meta">
+                            <h4>Punam,25</h4>
+                            <p>ruler bamnoli/p>
+                        </div>
+                    </div>
+                    <p class="testimonial-quote">
+                        "Before joining this platform, I had no access to quality education beyond my village school. Now, I've completed courses in computer literacy and started a small data entry business serving local shops."
+                    </p>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-header">
+                        <div class="testimonial-avatar">
+                            <img src="c:\Users\Laptop Hub\Pictures\download (24).jpeg" alt="Testimonial">
+                        </div>
+                        <div class="testimonial-meta">
+                            <h4>Aasha, 30</h4>
+                            <p>Sangli</p>
+                        </div>
+                    </div>
+                    <p class="testimonial-quote">
+                        "The mentorship program connected me with a woman engineer who grew up in my region. Her guidance helped me improve my math skills, and now I'm preparing for university entrance exams."
+                    </p>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-header">
+                        <div class="testimonial-avatar">
+                            <img src="c:\Users\Laptop Hub\Pictures\download (23).jpeg" alt="Testimonial">
+                        </div>
+                        <div class="testimonial-meta">
+                            <h4>vidya, 29</h4>
+                            <p>Rural Satara</p>
+                        </div>
+                    </div>
+                    <p class="testimonial-quote">
+                        "I used the platform's financial literacy modules to start a small handicraft cooperative with five other girls. We now sell our products online to customers worldwide."
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="cta">
+        <div class="container">
+            <h2>Join Our Growing Community</h2>
+            <p>Connect with thousands of rural girls who are transforming their lives through digital education and entrepreneurship.</p>
+            <div class="cta-buttons">
+                <a href="user register page.html"><button class="btn btn-secondary">Register Now</button></a>
+                <a href="https://www.youtube.com/watch?v=tnRfIZvmE_Y"><button class="btn btn-outline" style="border-color: white; color: white;">Watch Tutorial</button></a>
+            </div>
+        </div>
+    </section>
+
+    <section class="partners">
+        <div class="container">
+            <div class="section-title">
+                <h2>Woman Helpline</h2>
+                <p>Woman security is most important.</p>
+            </div>
+            <div class="partners-grid">
+                <a href="https://depwd.gov.in/others-helplines/"><img src="c:\Users\Laptop Hub\Pictures\download.png" alt="Partner Logo" class="partner-logo"></a>
+                <a href="https://dial112.mahapolice.gov.in/CitizenPortal-Maharashtra/node/1"><img src="c:\Users\Laptop Hub\Pictures\download (25).jpeg" alt="Partner Logo" class="partner-logo"></a>
+                <a href="https://www.red.health/blogs/the-top-10-ambulance-services-in-india-a-comprehensive-overview"><img src="c:\Users\Laptop Hub\Pictures\download (26).jpeg" alt="Partner Logo" class="partner-logo"></a>
+                
+            </div>
+        </div>
+    </section>
+
+    <div class="dashboard" id="dashboard">
+        <div class="container">
+            <div class="dashboard-header">
+                <div class="dashboard-welcome">
+                    <h2>Welcome, Lakshmi!</h2>
+                    <p>Continue your learning journey</p>
+                </div>
+                <button class="btn btn-primary">Browse All Courses</button>
+            </div>
+            
+            <div class="progress-container">
+                <div class="progress-header">
+                    <h3>Your Progress</h3>
+                    <span>60% Complete</span>
+                </div>
+                <div class="progress-bar">
+                    <div class="progress-fill"></div>
+                </div>
+            </div>
+            
+            <h3>Continue Learning</h3>
+            <div class="courses-grid">
+                <div class="course-card">
+                    <div class="course-image">
+                        <img src="/api/placeholder/280/160" alt="Digital Literacy Course">
+                    </div>
+                    <div class="course-content">
+                        <span class="course-category">Digital Skills</span>
+                        <h3>Introduction to Digital Literacy</h3>
+                        <p>Learn the fundamentals of computers, internet, and digital tools.</p>
+                        <div class="course-meta">
+                            <span>6 Modules</span>
+                            <span>65% Complete</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="course-card">
+                    <div class="course-image">
+                        <img src="/api/placeholder/280/160" alt="Financial Literacy Course">
+                    </div>
+                    <div class="course-content">
+                        <span class="course-category">Financial Skills</span>
+                        <h3>Financial Literacy Basics</h3>
+                        <p>Understanding money management, savings, and simple accounting.</p>
+                        <div class="course-meta">
+                            <span>8 Modules</span>
+                            <span>40% Complete</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="course-card">
+                    <div class="course-image">
+                        <img src="/api/placeholder/280/160" alt="Entrepreneurship Course">
+                    </div>
+                    <div class="course-content">
+                        <span class="course-category">Entrepreneurship</span>
+                        <h3>Starting a Micro-Business</h3>
+                        <p>From idea to execution: creating your first small business.</p>
+                        <div class="course-meta">
+                            <span>10 Modules</span>
+                            <span>15% Complete</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="container">
+            <div class="footer-container">
+                <div class="footer-column">
+                    <h3>Platform</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">Courses</a></li>
+                        <li><a href="#">Mentorship</a></li>
+                        <li><a href="#">Resources</a></li>
+                        <li><a href="#">Marketplace</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Resources</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">Learning Guides</a></li>
+                        <li><a href="#">Business Templates</a></li>
+                        <li><a href="#">Community Forums</a></li>
+                        <li><a href="#">Success Stories</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Support</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">Help Center</a></li>
+                        <li><a href="#">Contact Us</a></li>
+                        <li><a href="#">FAQ</a></li>
+                        <li><a href="#">Technical Support</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>About</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">Our Mission</a></li>
+                        <li><a href="#">Team</a></li>
+                        <li><a href="#">Partners</a></li>
+                        <li><a href="#">Careers</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2025 Rural Girls' Digital Empowerment Platform. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Simple JavaScript for Demo Functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            // Mobile menu toggle
+            const menuToggle = document.getElementById('menuToggle');
+            const navMenu = document.getElementById('navMenu');
+            
+            menuToggle.addEventListener('click', function() {
+                navMenu.classList.toggle('show');
+            });
+            
+            // Login button - show dashboard (demo purpose only)
+            const loginBtn = document.getElementById('loginBtn');
+            const dashboard = document.getElementById('dashboard');
+            
+            loginBtn.addEventListener('click', function() {
+                // In a real application,
+               

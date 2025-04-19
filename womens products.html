@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Women-Founded Products</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    body {
+      background-color: #f9f3f8;
+      color: #333;
+    }
+
+    header {
+      background: linear-gradient(135deg, #9c27b0, #673ab7);
+      color: white;
+      padding: 2rem 0;
+      text-align: center;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+    }
+
+    .subtitle {
+      font-size: 1.2rem;
+      opacity: 0.9;
+    }
+
+    .filter-container {
+      background-color: white;
+      padding: 1rem;
+      margin: 2rem 0;
+      border-radius: 8px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .filter-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      width: 100%;
+    }
+
+    .add-product-btn {
+      background-color: #ff7043;
+      color: white;
+      border: none;
+      padding: 8px 20px;
+      border-radius: 20px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+      font-weight: bold;
+    }
+
+    .add-product-btn:hover {
+      background-color: #f4511e;
+    }
+
+    .filter-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      justify-content: flex-end;
+    }
+
+    .filter-title {
+      margin-right: 10px;
+    }
+
+    .filter-btn {
+      border: none;
+      background-color: #e1bee7;
+      color: #4a148c;
+      padding: 8px 16px;
+      border-radius: 20px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .filter-btn:hover {
+      background-color: #ba68c8;
+      color: white;
+    }
+
+    .filter-btn.active {
+      background-color: #8e24aa;
+      color: white;
+    }
+
+    .products-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 30px;
+      margin: 2rem 0;
+    }
+
+    .product-card {
+      background-color: white;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+      transition: transform 0.3s ease;
+    }
+
+    .product-card:hover {
+      transform: translateY(-5px);
+    }
+
+    .product-image {
+      height: 200px;
+      background-color: #fffeff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .product-image img {
+      max-width: 100%;
+      max-height: 100%;
+      object-fit: cover;
+    }
+
+    .product-info {
+      padding: 1.5rem;
+    }
+
+    .product-category {
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      color: #9575cd;
+      font-weight: bold;
+      margin-bottom: 0.5rem;
+    }
+
+    .product-name {
+      font-size: 1.4rem;
+      margin-bottom: 0.5rem;
+      color: #4a148c;
+    }
+
+    .product-description {
+      font-size: 0.9rem;
+      color: #666;
+      margin-bottom: 1rem;
+      line-height: 1.6;
+    }
+
+    .founder-section {
+      display: flex;
+      align-items: center;
+      margin-top: 1rem;
+      padding-top: 1rem;
+      border-top: 1px solid #e0e0e0;
+    }
+
+    .founder-image {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      background-color: #d1c4e9;
+      margin-right: 1rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #673ab7;
+      font-weight: bold;
+    }
+
+    .founder-info {
+      flex: 1;
+    }
+
+    .founder-name {
+      font-weight: bold;
+      color: #512da8;
+      margin-bottom: 0.2rem;
+    }
+
+    .founder-title {
+      font-size: 0.8rem;
+      color: #7e57c2;
+    }
+
+    .buy-btn {
+      margin-top: 1rem;
+      padding: 10px 20px;
+      background-color: #2196f3;
+      color: white;
+      border: none;
+      border-radius: 20px;
+      cursor: pointer;
+      font-weight: bold;
+      transition: background-color 0.3s ease;
+    }
+
+    .buy-btn:hover {
+      background-color: #1976d2;
+    }
+
+    footer {
+      background-color: #4a148c;
+      color: white;
+      padding: 2rem 0;
+      text-align: center;
+      margin-top: 3rem;
+    }
+
+    .footer-content {
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    .footer-title {
+      margin-bottom: 1rem;
+    }
+
+    .footer-text {
+      opacity: 0.8;
+      line-height: 1.6;
+      margin-bottom: 1.5rem;
+    }
+
+    .social-links {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+    }
+
+    .social-link {
+      color: white;
+      opacity: 0.8;
+      transition: opacity 0.3s ease;
+      text-decoration: none;
+    }
+
+    .social-link:hover {
+      opacity: 1;
+    }
+
+    @media (max-width: 768px) {
+      .products-grid {
+        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+      }
+
+      h1 {
+        font-size: 2rem;
+      }
+
+      .filter-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+      }
+      
+      .filter-container {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 15px;
+        margin-top:1cm;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container">
+      <h1>Women-Founded Products</h1>
+      <p class="subtitle">Celebrating innovation and entrepreneurship by women creators</p>
+    </div>
+  </header>
+
+  <div class="container">
+    <div class="filter-container">
+      <a href="add product.html"><button class="add-product-btn">Add Your Product</button></a>
+      <div class="filter-header">
+       <h3>filter products</h3>
+        <div class="filter-buttons">
+          <a href="index.html"><button class="filter-btn active">All Products</button></a>
+          <a href="beauty.html"><button class="filter-btn">Beauty</button></a>
+          <a href="tech.html"><button class="filter-btn">Tech</button></a>
+          <a href="fashion.html"><button class="filter-btn">Fashion</button></a>
+          <a href="wellness.html"><button class="filter-btn">Wellness</button></a>
+        </div>
+      </div>
+    </div>
+
+    <div class="products-grid">
+      <!-- Product 1 -->
+      <div class="product-card">
+        <div class="product-image">
+          <img src="c:\Users\Laptop Hub\Pictures\download (12).jpeg" alt="The Lip Bar" />
+        </div>
+        <div class="product-info">
+          <div class="product-category">Beauty</div>
+          <h3 class="product-name">multani mathi</h3>
+          <p class="product-description">Vegan and cruelty-free makeup designed for all skin tones and types.</p>
+          <div class="founder-section">
+            <div class="founder-image">MB</div>
+            <div class="founder-info">
+              <div class="founder-name">Melissa Butler</div>
+              <div class="founder-title">Founder & CEO</div>
+            </div>
+          </div>
+          <a href="c:\Users\Laptop Hub\Desktop\hackthon project\product info page.html">
+            <button class="buy-btn">Buy</button></a>
+        </div>
+      </div>
+
+      <!-- Product 2 -->
+      <div class="product-card">
+        <div class="product-image">
+          <img src="c:\Users\Laptop Hub\Pictures\download (14).jpeg" alt="Kurti" />
+        </div>
+        <div class="product-info">
+          <div class="product-category">fashion</div>
+          <h3 class="product-name">Kurti</h3>
+          <p class="product-description">A women-first dating and networking app designed to empower connections.</p>
+          <div class="founder-section">
+            <div class="founder-image">WW</div>
+            <div class="founder-info">
+              <div class="founder-name">Whitney Wolfe Herd</div>
+              <div class="founder-title">Founder & Former CEO</div>
+            </div>
+          </div>
+          <a href=""><button class="buy-btn">Buy</button></a>
+        </div>
+      </div>
+
+      <!-- Product 3 -->
+      <div class="product-card">
+        <div class="product-image">
+          <img src="c:\Users\Laptop Hub\Pictures\images (16).jpeg" alt="ear rings" />
+        </div>
+        <div class="product-info">
+          <div class="product-category">fashion</div>
+          <h3 class="product-name">Ear rings</h3>
+          <p class="product-description">Revolutionary shapewear that's comfortable, stylish and functional.</p>
+          <div class="founder-section">
+            <div class="founder-image">SB</div>
+            <div class="founder-info">
+              <div class="founder-name">Sara Blakely</div>
+              <div class="founder-title">Founder & Executive Chairwoman</div>
+            </div>
+          </div>
+          <a href="c:\Users\Laptop Hub\Desktop\hackthon project\product 2.html"><button class="buy-btn">Buy</button></a>
+        </div>
+      </div>
+
+      <!-- Product 4 -->
+      <div class="product-card">
+        <div class="product-image">
+          <img src="c:\Users\Laptop Hub\Pictures\download (17).jpeg" alt="" />
+        </div>
+        <div class="product-info">
+          <div class="product-category">food</div>
+          <h3 class="product-name">Achar</h3>
+          <p class="product-description">Clean, sustainable, and effective products for baby, beauty, and household.</p>
+          <div class="founder-section">
+            <div class="founder-image">JA</div>
+            <div class="founder-info">
+              <div class="founder-name">Jessica Alba</div>
+              <div class="founder-title">Founder & Chief Creative Officer</div>
+            </div>
+          </div>
+          <a href="c:\Users\Laptop Hub\Desktop\hackthon project\product info page.html"><button class="buy-btn">Buy</button></a>
+        </div>
+      </div>
+
+      <!-- Product 5 -->
+      <div class="product-card">
+        <div class="product-image">
+          <img src="c:\Users\Laptop Hub\Pictures\images (17).jpeg" alt="Stitch Fix" />
+        </div>
+        <div class="product-info">
+          <div class="product-category">beauty product</div>
+          <h3 class="product-name">beauty product</h3>
+          <p class="product-description">Personalized styling service combining data science and human stylists.</p>
+          <div class="founder-section">
+            <div class="founder-image">KL</div>
+            <div class="founder-info">
+              <div class="founder-name">Katrina Lake</div>
+              <div class="founder-title">Founder & Former CEO</div>
+            </div>
+          </div>
+          <button class="buy-btn">Buy</button>
+        </div>
+      </div>
+
+      <!-- Product 6 -->
+      <div class="product-card">
+        <div class="product-image">
+          <img src="c:\Users\Laptop Hub\Pictures\images (18).jpeg" alt="Theresia" />
+        </div>
+        <div class="product-info">
+          <div class="product-category">Home Decoration</div>
+          <h3 class="product-name">Chandelier</h3>
+          <p class="product-description">Clean skincare based on traditional herbal formulas and modern science.</p>
+          <div class="founder-section">
+            <div class="founder-image">TK</div>
+            <div class="founder-info">
+              <div class="founder-name">Theresia Kyung</div>
+              <div class="founder-title">Founder & Formulator</div>
+            </div>
+          </div>
+          <button class="buy-btn">Buy</button>
+        </div>
+      </div>
+
+      <!-- Product 7 -->
+      <div class="product-card">
+        <div class="product-image">
+          <img src="c:\Users\Laptop Hub\Pictures\download (20).jpeg" alt="Rent the Runway" />
+        </div>
+        <div class="product-info">
+          <div class="product-category">Masale</div>
+          <h3 class="product-name">Masale</h3>
+          <p class="product-description">Designer clothing and accessory rentals via subscription.</p>
+          <div class="founder-section">
+            <div class="founder-image">JH</div>
+            <div class="founder-info">
+              <div class="founder-name">Jennifer Hyman</div>
+              <div class="founder-title">Co-Founder & CEO</div>
+            </div>
+          </div>
+          <button class="buy-btn">Buy</button>
+        </div>
+      </div>
+
+      <!-- Product 8 -->
+      <div class="product-card">
+        <div class="product-image">
+          <img src="c:\Users\Laptop Hub\Pictures\download (21).jpeg" alt="2" />
+        </div>
+        <div class="product-info">
+          <div class="product-category">Mens Faction</div>
+          <h3 class="product-name">shirts </h3>
+          <p class="product-description">Personal genetics company providing DNA testing and ancestry information.</p>
+          <div class="founder-section">
+            <div class="founder-image">AW</div>
+            <div class="founder-info">
+              <div class="founder-name">Anne Wojcicki</div>
+              <div class="founder-title">Co-Founder & CEO</div>
+            </div>
+          </div>
+          <button class="buy-btn">Buy</button>
+        </div>
+      </div>
+
+      <!-- Product 9 -->
+      <div class="product-card">
+        <div class="product-image">
+          <img src="c:\Users\Laptop Hub\Pictures\download (22).jpeg" alt="2ndMe" />
+        </div>
+        <div class="product-info">
+          <div class="product-category">Dry Fruits</div>
+          <h3 class="product-name">Dry Fruits </h3>
+          <p class="product-description">Personal genetics company providing DNA testing and ancestry information.</p>
+          <div class="founder-section">
+            <div class="founder-image">AW</div>
+            <div class="founder-info">
+              <div class="founder-name">Anne Wojcicki</div>
+              <div class="founder-title">Co-Founder & CEO</div>
+            </div>
+          </div>
+          <button class="buy-btn">Buy</button>
+        </div>
+      </div>
+
+      
+    </div>
+  </div>
+
+  <footer>
+    <div class="footer-content">
+      <h3 class="footer-title">Supporting Women Entrepreneurs</h3>
+      <p class="footer-text">By purchasing products from women-founded companies, you're helping to close the entrepreneurship gender gap and supporting innovation across industries.</p>
+      <div class="social-links">
+        <a href="#" class="social-link">Instagram</a>
+        <a href="#" class="social-link">Twitter</a>
+        <a href="#" class="social-link">LinkedIn</a>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>

@@ -1,0 +1,552 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stylish Women's Floral Maxi Dress - BestDeals</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+        
+        body {
+            background-color: #f5f5f5;
+        }
+        
+        .header {
+            background-color: #2d0ddf;
+            padding: 15px 0;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            color: white;
+            font-size: 24px;
+            font-weight: bold;
+        }
+        
+        .search-bar {
+            flex-grow: 1;
+            margin: 0 20px;
+        }
+        
+        .search-bar input {
+            width: 100%;
+            padding: 10px;
+            border-radius: 4px;
+            border: none;
+        }
+        
+        .nav-icons {
+            display: flex;
+            gap: 20px;
+            color: white;
+        }
+        
+        .nav-icon {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            cursor: pointer;
+            font-size: 14px;
+        }
+        
+        .nav-icon i {
+            margin-bottom: 5px;
+            font-size: 18px;
+        }
+        
+        .main {
+            padding: 20px 0;
+        }
+        
+        .product-container {
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            display: flex;
+            flex-direction: column;
+            margin-bottom: 20px;
+        }
+        
+        @media (min-width: 768px) {
+            .product-container {
+                flex-direction: row;
+            }
+        }
+        
+        .product-images {
+            flex: 1;
+            padding: 20px;
+            height: auto;
+            width: 100%;
+            
+        }
+        
+        .main-image {
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+            border-radius: 4px;
+            margin-bottom: 10px;
+        }
+        
+        .thumbnail-container {
+            display: flex;
+            gap: 10px;
+            overflow-x: auto;
+        }
+        
+        .thumbnail {
+            width: 80px;
+            height: 80px;
+            border-radius: 4px;
+            object-fit: cover;
+            cursor: pointer;
+            border: 2px solid transparent;
+        }
+        
+        .thumbnail.active {
+            border-color: #fb2e79;
+        }
+        
+        .product-details {
+            flex: 1;
+            padding: 20px;
+            border-left: 1px solid #eee;
+        }
+        
+        .product-title {
+            font-size: 22px;
+            margin-bottom: 10px;
+            color: #333;
+        }
+        
+        .ratings {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+        
+        .rating-badge {
+            background-color: #4caf50;
+            color: white;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-size: 14px;
+            margin-right: 10px;
+        }
+        
+        .review-count {
+            color: #888;
+            font-size: 14px;
+        }
+        
+        .price-container {
+            margin-bottom: 20px;
+        }
+        
+        .discounted-price {
+            font-size: 24px;
+            font-weight: bold;
+            color: #333;
+        }
+        
+        .original-price {
+            font-size: 16px;
+            color: #888;
+            text-decoration: line-through;
+            margin-left: 10px;
+        }
+        
+        .discount-percent {
+            font-size: 16px;
+            color: #4caf50;
+            margin-left: 10px;
+        }
+        
+        .tax-info {
+            font-size: 12px;
+            color: #888;
+            margin-top: 5px;
+        }
+        
+        .offers {
+            margin-bottom: 20px;
+        }
+        
+        .offer-title {
+            font-size: 16px;
+            font-weight: bold;
+            margin-bottom: 10px;
+            color: #333;
+        }
+        
+        .offer-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 8px;
+        }
+        
+        .offer-icon {
+            color: #fb2e79;
+            margin-right: 10px;
+        }
+        
+        .sizes {
+            margin-bottom: 20px;
+        }
+        
+        .size-options {
+            display: flex;
+            gap: 10px;
+            margin-top: 10px;
+        }
+        
+        .size-option {
+            border: 1px solid #ddd;
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        
+        .size-option.active {
+            border-color: #fb2e79;
+            color: #fb2e79;
+        }
+        
+        .quantity {
+            margin-bottom: 20px;
+        }
+        
+        .quantity-selector {
+            display: flex;
+            align-items: center;
+            margin-top: 10px;
+        }
+        
+        .quantity-btn {
+            width: 40px;
+            height: 40px;
+            background-color: #f5f5f5;
+            border: 1px solid #ddd;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-size: 18px;
+        }
+        
+        .quantity-input {
+            width: 60px;
+            height: 40px;
+            border: 1px solid #ddd;
+            border-left: none;
+            border-right: none;
+            text-align: center;
+        }
+        
+        .delivery {
+            margin-bottom: 20px;
+        }
+        
+        .pincode-input {
+            display: flex;
+            margin-top: 10px;
+        }
+        
+        .pincode-input input {
+            flex-grow: 1;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px 0 0 4px;
+        }
+        
+        .pincode-input button {
+            padding: 10px 20px;
+            background-color: white;
+            border: 1px solid #ddd;
+            border-left: none;
+            border-radius: 0 4px 4px 0;
+            cursor: pointer;
+        }
+        
+        .action-buttons {
+            display: flex;
+            gap: 15px;
+        }
+        
+        .btn {
+            flex: 1;
+            padding: 15px;
+            border-radius: 4px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            text-align: center;
+            border: none;
+        }
+        
+        .btn-buy {
+            background-color: #fb2e79;
+            color: white;
+        }
+        
+        .btn-cart {
+            background-color: #ff9f00;
+            color: white;
+        }
+        
+        .product-description {
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 1px solid #eee;
+        }
+        
+        .description-title {
+            font-size: 18px;
+            margin-bottom: 10px;
+            color: #333;
+        }
+        
+        .description-text {
+            font-size: 14px;
+            line-height: 1.6;
+            color: #666;
+        }
+        
+        .product-details-table {
+            margin-top: 20px;
+            width: 100%;
+            border-collapse: collapse;
+        }
+        
+        .product-details-table tr {
+            border-bottom: 1px solid #eee;
+        }
+        
+        .product-details-table tr:last-child {
+            border-bottom: none;
+        }
+        
+        .product-details-table td {
+            padding: 10px 0;
+            font-size: 14px;
+        }
+        
+        .product-details-table td:first-child {
+            font-weight: bold;
+            width: 30%;
+            color: #333;
+        }
+        
+        .product-details-table td:last-child {
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">Rular Womans</div>
+                <div class="search-bar">
+                    <input type="text" placeholder="Search for products...">
+                </div>
+                <div class="nav-icons">
+                    <div class="nav-icon">
+                        <i>🛒</i>
+                        <span>Cart</span>
+                    </div>
+                    <div class="nav-icon">
+                        <i>👤</i>
+                        <span>Account</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    
+    <main class="main">
+        <div class="container">
+            <div class="product-container">
+                <div class="product-images">
+                    <img src="C:\Users\91900\OneDrive\Desktop\HACKTHON\Earing.jpg" alt="Earing" class="main-image">
+                    <div class="thumbnail-container">
+                        <img src="C:\Users\91900\OneDrive\Desktop\HACKTHON\images.jpeg" alt="images" class="thumbnail active">
+                        <img src="C:\Users\91900\OneDrive\Desktop\HACKTHON\imagess.jpeg" alt="imagess" class="thumbnail">
+                        <img src="C:\Users\91900\OneDrive\Desktop\HACKTHON\image.jpeg" alt="image" class="thumbnail">
+                    </div>
+                </div>
+                
+                <div class="product-details">
+                    <h1 class="product-title">Earings</h1>
+                    
+                    <div class="ratings">
+                        <div class="rating-badge">4.2 ★</div>
+                        <div class="review-count">1,245 reviews</div>
+                    </div>
+                    
+                    <div class="price-container">
+                        <span class="discounted-price">₹100</span>
+                        <span class="original-price">₹150</span>
+                        <span class="discount-percent">68% OFF</span>
+                        <div class="tax-info">Inclusive of all taxes</div>
+                    </div>
+                    
+                    <div class="offers">
+                        <div class="offer-title">Available Offers</div>
+                        <div class="offer-item">
+                            <span class="offer-icon">🏷</span>
+                            <span>Get flat ₹25 off on your first order</span>
+                        </div>
+                        <div class="offer-item">
+                            <span class="offer-icon">🏷</span>
+                            <span>Free shipping on orders above ₹499</span>
+                        </div>
+                        <div class="offer-item">
+                            <span class="offer-icon">🏷</span>
+                            <span>Additional 5% off on prepaid orders</span>
+                        </div>
+                    </div>
+                    
+                    <div class="quantity">
+                        <div class="offer-title">Quantity</div>
+                        <div class="quantity-selector">
+                            <div class="quantity-btn">-</div>
+                            <input type="text" value="1" class="quantity-input">
+                            <div class="quantity-btn">+</div>
+                        </div>
+                    </div>
+                    
+                    <div class="delivery">
+                        <div class="offer-title">Delivery</div>
+                        <div class="pincode-input">
+                            <input type="text" placeholder="Enter Pincode">
+                            <button>Check</button>
+                        </div>
+                    </div>
+                    
+                    <div class="action-buttons">
+                        <button class="btn btn-cart">ADD TO CART</button>
+                        <button class="btn btn-buy">BUY NOW</button>
+                    </div>
+                    
+                    <div class="product-description">
+                        <h3 class="description-title">Product Description</h3>
+                        <p class="description-text">
+                            This beautiful floral print maxi dress is perfect for summer outings and casual wear. Made from soft, breathable fabric that provides comfort throughout the day. The attractive floral pattern and flowy design make it a must-have in your wardrobe.
+                        </p>
+                        
+                        <table class="product-details-table">
+                            <tr>
+                                <td>Fabric</td>
+                                <td>Polyester</td>
+                            </tr>
+                            <tr>
+                                <td>Pattern</td>
+                                <td>Floral Print</td>
+                            </tr>
+                            <tr>
+                                <td>Style</td>
+                                <td>Maxi Dress</td>
+                            </tr>
+                            <tr>
+                                <td>Neck</td>
+                                <td>Round Neck</td>
+                            </tr>
+                            <tr>
+                                <td>Sleeve Length</td>
+                                <td>Short Sleeve</td>
+                            </tr>
+                            <tr>
+                                <td>Color</td>
+                                <td>Pink Floral</td>
+                            </tr>
+                            <tr>
+                                <td>Return Policy</td>
+                                <td>7 days easy returns</td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    
+    <script>
+        // Simple JavaScript for thumbnail selection
+        document.querySelectorAll('.thumbnail').forEach(thumbnail => {
+            thumbnail.addEventListener('click', function() {
+                // Remove active class from all thumbnails
+                document.querySelectorAll('.thumbnail').forEach(thumb => {
+                    thumb.classList.remove('active');
+                });
+                
+                // Add active class to clicked thumbnail
+                this.classList.add('active');
+                
+                // Change main image (in a real app, you would change the src)
+                document.querySelector('.main-image').src = this.src.replace('80/80', '400/320');
+            });
+        });
+        
+        // Size selection
+        document.querySelectorAll('.size-option').forEach(option => {
+            option.addEventListener('click', function() {
+                document.querySelectorAll('.size-option').forEach(opt => {
+                    opt.classList.remove('active');
+                });
+                
+                this.classList.add('active');
+            });
+        });
+        
+        // Quantity buttons
+        const quantityInput = document.querySelector('.quantity-input');
+        const decreaseBtn = document.querySelectorAll('.quantity-btn')[0];
+        const increaseBtn = document.querySelectorAll('.quantity-btn')[1];
+        
+        decreaseBtn.addEventListener('click', function() {
+            let value = parseInt(quantityInput.value);
+            if (value > 1) {
+                quantityInput.value = value - 1;
+            }
+        });
+        
+        increaseBtn.addEventListener('click', function() {
+            let value = parseInt(quantityInput.value);
+            quantityInput.value = value + 1;
+        });
+        
+        // Buy now button action
+        document.querySelector('.btn-buy').addEventListener('click', function() {
+            alert('Proceeding to checkout!');
+        });
+        
+        // Add to cart button action
+        document.querySelector('.btn-cart').addEventListener('click', function() {
+            alert('Product added to cart!');
+        });
+    </script>
+</body>
+</html>

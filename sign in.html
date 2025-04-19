@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Sign Up</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    body {
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: #f5f7fa;
+    }
+
+    .container {
+      width: 400px;
+      padding: 40px;
+      background-color: white;
+      border-radius: 10px;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+    }
+
+    .header {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    .header h1 {
+      color: #333;
+      font-size: 28px;
+      font-weight: 600;
+      margin-bottom: 10px;
+    }
+
+    .header p {
+      color: #666;
+      font-size: 14px;
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    .form-group label {
+      display: block;
+      margin-bottom: 8px;
+      font-size: 14px;
+      color: #555;
+      font-weight: 500;
+    }
+
+    .form-group input {
+      width: 100%;
+      padding: 12px 15px;
+      font-size: 14px;
+      border: 1px solid #ddd;
+      border-radius: 6px;
+    }
+
+    .sign-in-button {
+      width: 100%;
+      padding: 12px;
+      background-color: #4f46e5;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      font-size: 16px;
+      font-weight: 500;
+      cursor: pointer;
+    }
+
+    .divider {
+      display: flex;
+      align-items: center;
+      margin: 25px 0;
+      color: #888;
+      font-size: 14px;
+    }
+
+    .divider::before, .divider::after {
+      content: "";
+      flex: 1;
+      height: 1px;
+      background-color: #ddd;
+    }
+
+    .divider::before {
+      margin-right: 15px;
+    }
+
+    .divider::after {
+      margin-left: 15px;
+    }
+
+    .social-login {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      margin-bottom: 25px;
+    }
+
+    .social-button {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      background-color: #f2f3f7;
+      border: 1px solid #ddd;
+      cursor: pointer;
+    }
+
+    .social-icon {
+      font-size: 18px;
+    }
+
+    .sign-up {
+      text-align: center;
+      font-size: 14px;
+      color: #666;
+    }
+
+    .sign-up a {
+      color: #4f46e5;
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    .sign-up a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <h1>Create Account</h1>
+      <p>Please fill in the information below to sign up</p>
+    </div>
+
+    <form action="http://localhost:5000/user/signup" method="POST">
+      <div class="form-group">
+        <label for="name">Full Name</label>
+        <input type="text" id="name" name="username" placeholder="Enter your full name" required />
+      </div>
+
+      <div class="form-group">
+        <label for="email">Email Address</label>
+        <input type="email" id="email" name="email" placeholder="Enter your email" required />
+      </div>
+
+      <div class="form-group">
+        <label for="password">Password</label>
+        <input type="password" id="password" name="password" placeholder="Create a password" required />
+      </div>
+
+      <button type="submit" class="sign-in-button">Sign Up</button>
+    </form>
+
+    <div class="divider">or continue with</div>
+
+    <div class="social-login">
+      <a href="https://accounts.google.com/o/oauth2/v2/auth/oauthchooseaccount?access_type=offline&scope=email%20profile&response_type=code&client_id=640450208427-1o021c9aop4vsvv29abh8rdq06kh9kuj.apps.googleusercontent.com&redirect_uri=https%3A%2F%2Fapp.presentations.ai%2Fdocs%2FsocialAuthCallBack&state=%7B%22source%22%3A%22web%22%2C%22template%22%3A%22NA%22%7D&login_hint&prompt=select_account&service=lso&o2v=2&ddm=1&flowName=GeneralOAuthFlow"><div class="social-button"><div class="social-icon">G</div></div></a>
+      <a href="https://www.facebook.com/"><div class="social-button"><div class="social-icon">f</div></div></a>
+     
+    </div>
+
+    <div class="sign-up">
+      Already have an account? <a href="login page.html">Sign in</a>
+    </div>
+  </div>
+</body>
+</html>
